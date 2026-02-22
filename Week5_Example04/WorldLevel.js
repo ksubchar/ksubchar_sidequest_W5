@@ -31,9 +31,9 @@ class WorldLevel {
     for (const o of this.obstacles) rect(o.x, o.y, o.w, o.h, o.r ?? 0);
   }
 
-  drawHUD(player, camX, camY) {
+  /* drawHUD(player, camX, camY) {
     noStroke();
-    fill(20);
+    fill(225);
     text("Example 4 — JSON world + smooth camera (lerp).", 12, 20);
     text(
       "camLerp(JSON): " +
@@ -49,5 +49,5 @@ class WorldLevel {
       12,
       40,
     );
-  }
+  } */
 }
