@@ -8,6 +8,12 @@ let player;
 let camX = 0;
 let camY = 0;
 
+let sprites = [];
+const NUM_SPRITES = 150;
+
+const LIGHT_RADIUS = 140;
+const DARK_ALPHA = 220;
+
 function preload() {
   worldData = loadJSON("world.json"); // load JSON before setup [web:122]
 }
@@ -56,7 +62,20 @@ function draw() {
   player.draw();
   pop();
 
-  level.drawHUD(player, camX, camY);
+  // Spotlight mask (screen space)
+  const lightX = player.x - camX;
+  const lightY = player.y - camY;
+
+  push();
+  noStroke();
+  fill(0, DARK_ALPHA);
+  rect(0, 0, width, height);
+  erase();
+  ellipse(lightX, lightY, LIGHT_RADIUS * 2, LIGHT_RADIUS * 2);
+  noErase();
+  pop();
+
+  //level.drawHUD(player, camX, camY);
 }
 
 function keyPressed() {
