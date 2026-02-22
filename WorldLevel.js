@@ -19,15 +19,29 @@ class WorldLevel {
 
   drawWorld() {
     noStroke();
-    fill(this.bg[0], this.bg[1], this.bg[2]);
+    // Wooden floor base
+    fill(170, 125, 70);
     rect(0, 0, this.w, this.h);
 
-    stroke(245);
-    for (let x = 0; x <= this.w; x += this.gridStep) line(x, 0, x, this.h);
-    for (let y = 0; y <= this.h; y += this.gridStep) line(0, y, this.w, y);
+    // Wood planks
+    const plankH = 60;
+    stroke(140, 95, 50);
+    strokeWeight(2);
+    for (let y = 0; y <= this.h; y += plankH) {
+      line(0, y, this.w, y);
+    }
+
+    // Subtle grain lines
+    stroke(150, 105, 60, 120);
+    strokeWeight(1);
+    for (let i = 0; i < 120; i++) {
+      const gx = (i * 37) % this.w;
+      const gy = (i * 83) % this.h;
+      line(gx, gy, gx + 30, gy + 4);
+    }
 
     noStroke();
-    fill(170, 190, 210);
+    fill(140, 95, 60);
     for (const o of this.obstacles) rect(o.x, o.y, o.w, o.h, o.r ?? 0);
   }
 
