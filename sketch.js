@@ -9,7 +9,7 @@ let camX = 0;
 let camY = 0;
 
 let sprites = [];
-const NUM_SPRITES = 150;
+const NUM_SPRITES = 80;
 
 let lightMask;
 const LIGHT_RADIUS = 140;
@@ -32,6 +32,14 @@ function setup() {
 
   camX = player.x - width / 2;
   camY = player.y - height / 2;
+
+  sprites = [];
+  for (let i = 0; i < NUM_SPRITES; i++) {
+    const x = random(40, level.w - 40);
+    const y = random(40, level.h - 40);
+    const jitter = random(TWO_PI);
+    sprites.push(new SootSprites(x, y, jitter));
+  }
 }
 
 function draw() {
@@ -61,6 +69,10 @@ function draw() {
   push();
   translate(-camX, -camY);
   level.drawWorld();
+  for (const sprite of sprites) {
+    sprite.update(player);
+    sprite.draw();
+  }
   player.draw();
   pop();
 
