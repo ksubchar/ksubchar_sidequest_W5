@@ -32,17 +32,13 @@ class WorldLevel {
     }
 
     // Subtle grain lines
-    stroke(150, 105, 60, 200);
-    strokeWeight(1);
-    for (let i = 0; i < 100; i++) {
+    stroke(150, 105, 60, 160);
+    strokeWeight(3);
+    for (let i = 0; i < 110; i++) {
       const gx = (i * 37) % this.w;
       const gy = (i * 83) % this.h;
       line(gx, gy, gx + 30, gy + 4);
     }
-
-    noStroke();
-    fill(140, 95, 60);
-    for (const o of this.obstacles) rect(o.x, o.y, o.w, o.h, o.r ?? 0);
   }
 
   /* drawHUD(player, camX, camY) {
