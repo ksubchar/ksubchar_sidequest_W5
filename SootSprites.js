@@ -1,49 +1,33 @@
-class SootSprite {
-  constructor(x, y, size) {
+class SootSprites {
+  constructor(x, y, size, jitter) {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.jitterOffset = 0;
-    this.jitterSpeed = random(0.02, 0.05);
-    this.jitterAmount = size * 0.1;
+    this.jitter = jitter;
+    this.floatAmp = random(1, 3);
+    this.floatSpeed = random(0.01, 0.03);
   }
 
-  update() {
-    this.jitterOffset = sin(frameCount * this.jitterSpeed) * this.jitterAmount;
-  }
+  update(player) {
+    const dx = this.x - player.x;
+    const dy = this.y - player.y;
+    const d = sqrt(dx * dx + dy * dy);
+    const avoidRadius = 50;
 
-  display(playerX, playerY, lightRadius) {
-    const distance = dist(this.x, this.y, playerX, playerY);
-
-    if (distance < lightRadius + this.size) {
-      push();
-      fill(50, 50, 50, 200);
-      noStroke();
-      circle(this.x, this.y + this.jitterOffset, this.size);
-      pop();
-    }
-  }
-}
-
-class SootSpriteManager {
-  constructor(numSprites, worldWidth, worldHeight) {
-    this.sprites = [];
-
-    for (let i = 0; i < numSprites; i++) {
-      const x = random(worldWidth);
-      const y = random(worldHeight);
-      const size = random(8, 20);
-      this.sprites.push(new SootSprite(x, y, size));
+    if (d > 0 && d < avoidRadius) {
+      const push = (avoidRadius - d) * 0.03;
+      this.x += (dx / d) * push;
+      this.y += (dy / d) * push;
     }
   }
 
-  update() {
-    this.sprites.forEach((sprite) => sprite.update());
-  }
+  draw() {
+    const t = frameCount * this.floatSpeed + this.jitter;
+    const ox = sin(t) * this.floatAmp;
+    const oy = cos(t * 1.3) * this.floatAmp;
 
-  display(playerX, playerY, lightRadius) {
-    this.sprites.forEach((sprite) =>
-      sprite.display(playerX, playerY, lightRadius),
-    );
+    noStroke();
+    fill(25, 25, 25, 220);
+    circle(this.x + ox, this.y + oy, this.size);
   }
 }
