@@ -10,7 +10,7 @@ class WorldLevel {
     this.obstacles = json.obstacles ?? [];
 
     // NEW: camera tuning knob from JSON (data-driven)
-    this.camLerp = json.camera?.lerp ?? 0.12;
+    this.camLerp = json.camera?.lerp ?? 0.08;
   }
 
   drawBackground() {
