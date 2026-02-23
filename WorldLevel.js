@@ -32,9 +32,9 @@ class WorldLevel {
     }
 
     // Subtle grain lines
-    stroke(150, 105, 60, 120);
+    stroke(150, 105, 60, 200);
     strokeWeight(1);
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 100; i++) {
       const gx = (i * 37) % this.w;
       const gy = (i * 83) % this.h;
       line(gx, gy, gx + 30, gy + 4);
