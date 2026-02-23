@@ -12,7 +12,7 @@ class SootSprites {
     const dx = this.x - player.x;
     const dy = this.y - player.y;
     const d = sqrt(dx * dx + dy * dy);
-    const avoidRadius = 80;
+    const avoidRadius = 100;
 
     if (d > 0 && d < avoidRadius) {
       const push = (avoidRadius - d) * 0.03;
@@ -41,7 +41,7 @@ class SootSprites {
 
     // Pupils
     fill(30, 30, 30);
-    ellipse(this.x + ox - 2.5, this.y + oy - 1, 3, 5);
-    ellipse(this.x + ox + 2.5, this.y + oy - 1, 3, 5);
+    ellipse(this.x + ox - 2.5, this.y + oy - 1, 2, 3);
+    ellipse(this.x + ox + 2.5, this.y + oy - 1, 2, 3);
   }
 }
