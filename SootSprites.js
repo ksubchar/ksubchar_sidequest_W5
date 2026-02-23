@@ -1,8 +1,8 @@
 class SootSprites {
-  constructor(x, y, size, jitter) {
+  constructor(x, y, jitter) {
     this.x = x;
     this.y = y;
-    this.size = size;
+    this.size = 20;
     this.jitter = jitter;
     this.floatAmp = random(1, 3);
     this.floatSpeed = random(0.01, 0.03);
@@ -12,7 +12,7 @@ class SootSprites {
     const dx = this.x - player.x;
     const dy = this.y - player.y;
     const d = sqrt(dx * dx + dy * dy);
-    const avoidRadius = 50;
+    const avoidRadius = 80;
 
     if (d > 0 && d < avoidRadius) {
       const push = (avoidRadius - d) * 0.03;
@@ -27,7 +27,21 @@ class SootSprites {
     const oy = cos(t * 1.3) * this.floatAmp;
 
     noStroke();
+
+    // Black body
     fill(25, 25, 25, 220);
-    circle(this.x + ox, this.y + oy, this.size);
+    ellipse(this.x + ox, this.y + oy, this.size, this.size);
+
+    // Left eye
+    fill(255, 255, 255, 240);
+    ellipse(this.x + ox - 3.5, this.y + oy - 1, 6, 8);
+
+    // Right eye
+    ellipse(this.x + ox + 3.5, this.y + oy - 1, 6, 8);
+
+    // Pupils
+    fill(30, 30, 30);
+    ellipse(this.x + ox - 2.5, this.y + oy - 1, 3, 5);
+    ellipse(this.x + ox + 2.5, this.y + oy - 1, 3, 5);
   }
 }
