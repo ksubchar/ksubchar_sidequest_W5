@@ -11,8 +11,8 @@ let camY = 0;
 let sprites = [];
 const NUM_SPRITES = 150;
 
+let lightMask;
 const LIGHT_RADIUS = 140;
-const DARK_ALPHA = 220;
 
 function preload() {
   worldData = loadJSON("world.json"); // load JSON before setup [web:122]
@@ -22,6 +22,8 @@ function setup() {
   createCanvas(VIEW_W, VIEW_H);
   textFont("sans-serif");
   textSize(14);
+
+  lightMask = createGraphics(VIEW_W, VIEW_H);
 
   level = new WorldLevel(worldData);
 
@@ -62,18 +64,15 @@ function draw() {
   player.draw();
   pop();
 
-  // Spotlight mask (screen space)
+  // Spotlight mask following player
   const lightX = player.x - camX;
   const lightY = player.y - camY;
-
-  push();
-  noStroke();
-  fill(0, DARK_ALPHA);
-  rect(0, 0, width, height);
-  erase();
-  ellipse(lightX, lightY, LIGHT_RADIUS * 2, LIGHT_RADIUS * 2);
-  noErase();
-  pop();
+  lightMask.clear();
+  lightMask.background(0, 0, 0, 220);
+  lightMask.erase();
+  lightMask.circle(lightX, lightY, LIGHT_RADIUS * 2);
+  lightMask.noErase();
+  image(lightMask, 0, 0);
 
   //level.drawHUD(player, camX, camY);
 }
