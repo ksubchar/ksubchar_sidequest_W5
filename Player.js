@@ -22,6 +22,6 @@ class Player {
   draw() {
     fill(50, 110, 255);
     noStroke();
-    rect(this.x - 12, this.y - 12, 24, 24, 5);
+    ellipse(this.x, this.y, 24, 28);
   }
 }
