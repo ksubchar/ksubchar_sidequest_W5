@@ -1,49 +1,36 @@
 # ksubchar_sidequest_W5
 
-## Project Title
-
-Give your project a short, clear title (e.g., "Side Quest Week 1: Interactive Shape Switcher").
+## Side Quest Week 5: Camera and World
 
 ---
 
-## Group Number (only for group work)
+## Authors
 
-List your group number.
+Kaitlyn Subcharoen (previously by Karen Cochrane and David Han)
 
 ---
 
 ## Description
 
-Briefly describe what your project does.  
-Explain what the user will see, how they can interact, and what inspired the design.
-
-Example:
-
-> This project lets users switch between shapes using keyboard inputs.  
-> It explores how visual feedback can communicate accessibility states.
+> In the dark is an explaoration game that lets the player controls a small toy car moving across the floor of a dark room.
+> Most of the world is hidden in darkness. Only a circular area around the player is visible, like a moving spotlight.
+> The camera follows the player as they reveal hidden small creatures on the floor.
+> These creatures, called Soot Sprites, are dust-like things that live in dark spaces.
+> They are also shy and will run away as player moves closer to them.
+> The world and its atmosphere are inspired by the Soot Sprites from My Neighbor Totoro.
 
 ---
 
 ## Interaction Instructions
 
-Describe how to use or play your project.
-
-- How does the user start?
-- What controls or keys do they use?
-- Any important visual or audio feedback to watch for?
-
-Example:
-
-> Press `S` to switch shapes and `R` to reset the canvas.
+- Press WASD or Arrow Keys to move around the world.
+- The camera and light will follow the player and reveal the world.
+- Try going closer to one of the Soot Sprites.
+- There are no enemies, goals, or scores
+- The experience is focused on atmosphere and exploration
 
 ---
 
 ## Assets
 
-List any images, sounds, or other files used in your assets/ folder.
-Include in-text citations for all assets that are not your own, and connect them to your reference list.
-
-Example:
-
-> - `assets/sound/beep.mp3` (created in GarageBand)
-> - `assets/image/background.png` (original artwork)
+N/A
