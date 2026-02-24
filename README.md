@@ -12,7 +12,7 @@ Kaitlyn Subcharoen (previously by Karen Cochrane and David Han)
 
 ## Description
 
-> In the dark is an explaoration game that lets the player controls a small toy car moving across the floor of a dark room.
+> In The Dark is an explaoration game that lets the player controls a small toy car moving across the floor of a dark room.
 > Most of the world is hidden in darkness. Only a circular area around the player is visible, like a moving spotlight.
 > The camera follows the player as they reveal hidden small creatures on the floor.
 > These creatures, called Soot Sprites, are dust-like things that live in dark spaces.
